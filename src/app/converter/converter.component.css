@@ -1,3 +1,9 @@
+.border{
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	padding: 10px;
+}
+
 .title {
 	display: flex;
 	justify-content:center;
