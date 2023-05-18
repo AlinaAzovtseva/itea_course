@@ -1,0 +1,34 @@
+<ng-container *ngIf="currency.length > 2; else oneCurrency">
+	<ng-container *ngTemplateOutlet="myTemplate"></ng-container>
+</ng-container>
+
+<ng-template #myTemplate>
+	<div *ngFor="let i of currency"
+	class="inner">
+		<span [innerHTML]="i.txt | boldItalic: 'bold'| uppercase">: </span>
+		<span>{{ i.val }} UAH</span>
+	</div>
+
+	<input type="text">
+	<select>
+		<option>USD</option>
+		<option>EUR</option>
+		<option>PLN</option>
+	</select>
+</ng-template>	
+
+<ng-template #oneCurrency>
+	<ng-container *ngIf="currency.length == 1; else zeroCurrency">
+		<span>Одна валюта:</span> 
+		<span>{{currency[0].txt | uppercase}} : </span>
+		<span>{{ currency[0].val }} UAH</span>
+	</ng-container>
+</ng-template>
+
+<ng-template #zeroCurrency>
+	<ng-container >
+		<span>Cейчас валют нет</span>
+	</ng-container>
+</ng-template>
+
+
