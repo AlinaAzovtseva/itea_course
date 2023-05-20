@@ -1,3 +1,20 @@
+
+<input type="text" [(ngModel)]="inputValue">
+
+	<select >
+		<option *ngFor="let i of currency">
+			{{ i.cc }}
+		</option>
+	</select>
+	<button (click)="saveData()">==></button>
+
+	<input type="text">
+	<select >
+		<option *ngFor="let i of currency">
+			{{ i.cc }}
+		</option>
+	</select>
+
 <ng-container *ngIf="currency.length > 2; else oneCurrency">
 	<ng-container *ngTemplateOutlet="myTemplate"></ng-container>
 </ng-container>
@@ -6,15 +23,8 @@
 	<div *ngFor="let i of currency"
 	class="inner">
 		<span [innerHTML]="i.txt | boldItalic: 'bold'| uppercase">: </span>
-		<span>{{ i.val }} UAH</span>
+		<span>{{ i.rate }} UAH</span>
 	</div>
-
-	<input type="text">
-	<select>
-		<option>USD</option>
-		<option>EUR</option>
-		<option>PLN</option>
-	</select>
 </ng-template>	
 
 <ng-template #oneCurrency>

@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,6 +6,20 @@ import { Component, Input} from '@angular/core';
   templateUrl: './currency-form.component.html',
   styleUrls: ['./currency-form.component.css']
 })
-export class CurrencyFormComponent {
-	@Input() currency: any;
+export class CurrencyFormComponent implements OnInit {
+
+  @Input() currency: any;
+
+  inputValue: string = '';
+
+  saveData() {
+    localStorage.setItem('key', this.inputValue);
+  }
+
+  ngOnInit() {
+    const storedValue = localStorage.getItem('key');
+    if (storedValue) {
+      this.inputValue = storedValue;
+    }
+  }	
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NbuService } from './nbu.service'
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-	currency_object = [
-		// 'val': 36.77,'txt':'usd'
-	// },{
-	// 	'val': 40.38,'txt':'eur'
-	// },{
-	// 	'val': 8.83,'txt':'pln'
-	 ]
+	
+	currency_object: any[] = [{usd:0, eur:0}];
 
+	 constructor(public api: NbuService){
+	 	this.api.getCurrency().subscribe(data=>this.currency_object = data as any[])
+	 }
+
+	 inputValue: string = '';
+
+  	saveData() {
+    localStorage.setItem('key', this.inputValue);
+  }
 }
+
+
