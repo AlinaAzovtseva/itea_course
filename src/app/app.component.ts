@@ -15,11 +15,7 @@ export class AppComponent {
 	 	this.api.getCurrency().subscribe(data=>this.currency_object = data as any[])
 	 }
 
-	 inputValue: string = '';
-
-  	saveData() {
-    localStorage.setItem('key', this.inputValue);
-  }
+	 
 }
 
 
