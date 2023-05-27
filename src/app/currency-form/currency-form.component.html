@@ -1,7 +1,7 @@
 <form [formGroup]="my_currency_form">
   <input type="text" formControlName="from">
 
-  <select formControlName="currencyFrom">
+  <select >
     <option *ngFor="let i of currency">
       {{ i.cc }}
     </option>
@@ -11,7 +11,7 @@
 
   <input type="text" formControlName="to">
 
-  <select formControlName="currencyTo">
+  <select >
     <option *ngFor="let i of currency">
       {{ i.cc }}
     </option>

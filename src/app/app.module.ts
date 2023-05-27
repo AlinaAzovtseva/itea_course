@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CurrencyHeaderComponent } from './currency_header/currency_header.component';
 import { CurrencyFormComponent } from './currency-form/currency-form.component';
-import { BoldItalicPipe } from './bold-italic.pipe'
+import { BoldItalicPipe } from './Pipes/bold-italic.pipe'
 
 
 @NgModule({
