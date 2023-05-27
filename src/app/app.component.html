@@ -1,7 +1,8 @@
 <div class="border">
 	<app-currency_header></app-currency_header>
 	<app-currency-form 
-
+	 [currencyFormComponent]="currencyFormComponent"
 	 [currency] = 'currency_object' 
+	 (convertClicked)="convertCurrency()"
 	></app-currency-form>
 </div>

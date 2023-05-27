@@ -7,19 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NbuService {
 
-currency_object = [{
-		'rate': 36.77,'txt':'usd'
-	},{
-		'rate': 40.38,'txt':'eur'
-	},{
-		'rate': 8.83,'txt':'pln'
-	}]
+currency_object = [{}]
 
    constructor(public http: HttpClient) {}
 
- getCurrency(){
+ getCurrency(): Promise<any[]> {
   return this.http.get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json")
-  // .subscribe(data=> console.log(data))
+  .toPromise().then(data => data as any[]);
 	
   }
 }

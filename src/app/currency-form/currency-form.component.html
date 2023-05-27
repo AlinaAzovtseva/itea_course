@@ -1,17 +1,19 @@
 <form [formGroup]="my_currency_form">
   <input type="text" formControlName="from">
 
-  <select >
+  <select formControlName="currencyFrom">
     <option *ngFor="let i of currency">
       {{ i.cc }}
     </option>
   </select>
 
-  <button (click)="saveData()">==></button>
+  <button (click)="saveData(); convertClicked.emit()">==></button>
+
+
 
   <input type="text" formControlName="to">
 
-  <select >
+  <select formControlName="currencyTo">
     <option *ngFor="let i of currency">
       {{ i.cc }}
     </option>

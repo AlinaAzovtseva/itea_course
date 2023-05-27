@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
  
 
@@ -7,9 +7,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './currency-form.component.html',
   styleUrls: ['./currency-form.component.css']
 })
-export class CurrencyFormComponent implements OnInit {
+export class CurrencyFormComponent implements AfterViewInit {
 
+  @Input() currencyObject: any[] = [{usd: 0, eur: 0}];
   @Input() currency: any;
+  @Input() currencyFormComponent: any;
+  @Output() convertClicked: EventEmitter<void> = new EventEmitter<void>();
+
   inputValue: string = '';
 
   my_currency_form: FormGroup = new FormGroup({
@@ -19,17 +23,21 @@ export class CurrencyFormComponent implements OnInit {
   		Validators.pattern(/^\d+$/)
   		]),
   	to: new FormControl("0"),
+  	currencyTo: new FormControl(),
+  	currencyFrom: new FormControl()
   })
 
   saveData() {
     localStorage.setItem('key', this.my_currency_form.value.from);
   }
 
-  ngOnInit() {
-    const storedValue = localStorage.getItem('key');
-    if (storedValue) {
-      this.inputValue = storedValue;
-      this.my_currency_form.patchValue({ from: storedValue });
-    }
-  }	
+  ngAfterViewInit(): void {
+  const storedValue = localStorage.getItem('key');
+  if (storedValue) {
+    this.inputValue = storedValue;
+    this.my_currency_form.patchValue({ from: storedValue });
+  }
+  
+}
+
 }
